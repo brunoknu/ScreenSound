@@ -1,6 +1,6 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "Bem-vindo ao Screen Sound!";
-List<string> listaDasBandas = new List<string>();
+List<string> listaDasBandas = new List<string>(); //teste{ "U2", "The Beatles", "Calypso"};
 
 void ExibirLogo()
 {
@@ -34,7 +34,7 @@ void ExibirOpcoesDoMenu()
     {
         case 1: RegistrarBanda();
             break;
-        case 2: Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
+        case 2: MostrarBandasRegistradas();
             break;
         case 3: Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
             break;
@@ -49,7 +49,7 @@ void ExibirOpcoesDoMenu()
 void RegistrarBanda()
 {
     Console.Clear();
-    Console.WriteLine("Registro de bandas.");
+    ExibirTituloDaOpcao("Registro de Bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     listaDasBandas.Add(nomeDaBanda);
@@ -58,4 +58,33 @@ void RegistrarBanda()
     Console.Clear();
     ExibirOpcoesDoMenu();
 }
+void MostrarBandasRegistradas()
+{
+    Console.Clear();
+    ExibirTituloDaOpcao("Bandas Registradas");
+
+    //for (int i = 0; i < listaDasBandas.Count; i++)
+    //{
+    //  Console.WriteLine($"Banda {i + 1}: {listaDasBandas[i]}");
+    //}
+
+    foreach (string banda in listaDasBandas)
+    {
+        Console.WriteLine($"Banda: {banda}");
+    }
+    Console.WriteLine("\nDigite uma tecla para voltar ao menu principal.");
+    Console.ReadKey();
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+
+void ExibirTituloDaOpcao(string titulo)
+{
+    int quantidadeDeLetras = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(quantidadeDeLetras, '*');
+    Console.WriteLine(asteriscos);
+    Console.WriteLine(titulo);
+    Console.WriteLine(asteriscos + "\n");
+}
+
 ExibirOpcoesDoMenu();
